@@ -21,6 +21,7 @@ public class UserResponse implements Serializable {
 	private String name;
 	private String email;
 	private String password;
+	private Boolean online;
 
 	public UserResponse() {
 	}
@@ -61,6 +62,14 @@ public class UserResponse implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getOnline() {
+		return online;
+	}
+
+	public void setOnline(Boolean online) {
+		this.online = online;
 	}
 
 }

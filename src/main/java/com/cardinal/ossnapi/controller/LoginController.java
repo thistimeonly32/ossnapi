@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
+	@CrossOrigin("*")
 	@ApiOperation(value = "validate the user for login")
 	@PostMapping(path = "/{email}/{password}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<LoginResponse> findAll(@PathVariable String email, @PathVariable String password) {

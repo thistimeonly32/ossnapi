@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.cardinal.ossnapi.dto.MessageRequestResponse;
 import com.cardinal.ossnapi.dto.UserResponse;
 import com.cardinal.ossnapi.model.Message;
+import com.cardinal.ossnapi.model.RealTimeUser;
 import com.cardinal.ossnapi.model.User;
 
 @Component
@@ -18,7 +19,9 @@ import com.cardinal.ossnapi.model.User;
 public class BeanMapperUtil extends DozerBeanMapper {
 
 	public UserResponse mapAsUserResponse(User user) {
-		return this.map(user, UserResponse.class);
+		UserResponse userRes = this.map(user, UserResponse.class);
+		userRes.setOnline(RealTimeUser.isUserOnline(userRes.getUserId()));
+		return userRes;
 	}
 
 	public List<UserResponse> mapAsUserResponseList(List<User> users) {
