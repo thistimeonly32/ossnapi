@@ -35,18 +35,21 @@ public class UserController {
 		return new ResponseEntity<List<UserResponse>>(userService.findAll(), HttpStatus.OK);
 	}
 
+	@CrossOrigin("*")
 	@ApiOperation(value = "Get List of Friend by User id (PK)")
 	@GetMapping(path = "friends/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<UserResponse>> getUserFriends(@PathVariable Long userId) {
 		return new ResponseEntity<List<UserResponse>>(userService.findAllFriends(userId), HttpStatus.OK);
 	}
 
+	@CrossOrigin("*")
 	@ApiOperation(value = "Get user of User id (PK)")
 	@GetMapping(path = "/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserResponse> getUserById(@PathVariable Long userId) {
 		return new ResponseEntity<UserResponse>(userService.findUserById(userId), HttpStatus.OK);
 	}
 
+	@CrossOrigin("*")
 	@ApiOperation(value = "Get messages of User by to_user_id and from_user_id (fk)")
 	@GetMapping(path = "messages/{toUserId}/{fromUserId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<MessageRequestResponse>> getUserMessages(@PathVariable Long toUserId,
@@ -55,6 +58,7 @@ public class UserController {
 				HttpStatus.OK);
 	}
 
+	@CrossOrigin("*")
 	@ApiOperation(value = "Save Message of User by to_user_id and from_user_id (fk)")
 	@PostMapping(path = "save-message", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<MessageRequestResponse> saveUserMessage(
