@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cardinal.ossnapi.dto.LoginResponse;
 import com.cardinal.ossnapi.dto.MessageRequestResponse;
+import com.cardinal.ossnapi.dto.MessageRequestResponsePaginated;
 import com.cardinal.ossnapi.dto.UserResponse;
 
 public interface UserService {
@@ -16,7 +17,8 @@ public interface UserService {
 
 	public UserResponse findUserById(Long userId);
 
-	public List<MessageRequestResponse> getMessagesByUser(Long toUserId, Long fromUserId);
+	public MessageRequestResponsePaginated getMessagesByUser(Long toUserId, Long fromUserId, Integer pageNo,
+			String timeStr);
 
 	public MessageRequestResponse saveUserMessage(MessageRequestResponse messageRequestResponse);
 

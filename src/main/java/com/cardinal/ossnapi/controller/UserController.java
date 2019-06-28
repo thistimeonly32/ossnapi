@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cardinal.ossnapi.dto.MessageRequestResponse;
+import com.cardinal.ossnapi.dto.MessageRequestResponsePaginated;
 import com.cardinal.ossnapi.dto.UserResponse;
 import com.cardinal.ossnapi.service.UserService;
 
@@ -51,10 +52,10 @@ public class UserController {
 
 	@CrossOrigin("*")
 	@ApiOperation(value = "Get messages of User by to_user_id and from_user_id (fk)")
-	@GetMapping(path = "messages/{toUserId}/{fromUserId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<MessageRequestResponse>> getUserMessages(@PathVariable Long toUserId,
-			@PathVariable Long fromUserId) {
-		return new ResponseEntity<List<MessageRequestResponse>>(userService.getMessagesByUser(toUserId, fromUserId),
+	@GetMapping(path = "messages/{toUserId}/{fromUserId}/{pageNo}/{timeStr}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<MessageRequestResponsePaginated> getUserMessages(@PathVariable Long toUserId,
+			@PathVariable Long fromUserId, @PathVariable Integer pageNo, @PathVariable String timeStr) {
+		return new ResponseEntity<MessageRequestResponsePaginated>(userService.getMessagesByUser(toUserId, fromUserId, pageNo, timeStr),
 				HttpStatus.OK);
 	}
 
