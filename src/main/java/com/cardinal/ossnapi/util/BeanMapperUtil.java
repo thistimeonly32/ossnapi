@@ -40,7 +40,7 @@ public class BeanMapperUtil extends DozerBeanMapper {
 				.setToUser(new UserResponse(message.getToUser().getUserId(), message.getToUser().getName()));
 		messageRequestResponse
 				.setFromUser(new UserResponse(message.getFromUser().getUserId(), message.getFromUser().getName()));
-		messageRequestResponse.setCreationTime(message.getCreationTimestamp().toString());
+		messageRequestResponse.setCreationTime(OssnUtil.timeStampFormat.format(message.getCreationTimestamp()));
 		return messageRequestResponse;
 	}
 
